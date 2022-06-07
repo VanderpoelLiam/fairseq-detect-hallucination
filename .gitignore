@@ -130,3 +130,5 @@ data-bin/
 
 # Experimental Folder
 experimental/*
+
+models/*

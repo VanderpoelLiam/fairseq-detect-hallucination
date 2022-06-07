@@ -6,11 +6,11 @@ import shutil
 from scipy import stats
 import torch
 
-test_dirs = ["eval_data/xsum/PtGen", "eval_data/xsum/TConvS2S", "eval_data/xsum/TranS2S", "eval_data/xsum/BERTS2S"]
-test_prefix = ["PtGen", "TConvS2S", "TranS2S", "BERTS2S"]
+test_dirs = ["eval_data/xsum/TranS2S"]
+test_prefix = ["TranS2S"]
 
-models = ["path/to/the/saved/model"]  # you can test multiple models
-datapath = "path/to/train/data"
+models = ["models/xsum.roberta.tar.gz"]
+datapath = "models/xsum.roberta.tar.gz/data"
 opt_dir = "output_logs"
 if not os.path.exists(opt_dir):
     os.mkdir(opt_dir)
@@ -73,9 +73,10 @@ for model in models:
     raw = True
     print("Loaded the model!")
     possible_correct_all, ncorrect, nsamples = 0, 0, 0
-    roberta.cuda()
+    # TODO: Uncomment two lines  when have a GPU
+    # roberta.cuda()
     roberta.eval()
-    roberta.half()
+    # roberta.half()
     max_positions = roberta.model.max_positions()
 
     for use_ref in [0, 1]:
