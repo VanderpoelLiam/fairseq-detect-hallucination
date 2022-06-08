@@ -48,13 +48,13 @@ def convert_gpt2_labels_to_raw_labels(sent_bpe, sent_detoks, bpe_labels):
 
 if __name__ == '__main__':
     suffix = sys.argv[1]
-    raw_dir = "data"
+    raw_dir = "../master-thesis/data/xsum-detect-hall/"
     source_fname = "source"
     hypo_fname = "hypo" + suffix
 
     model_path = "models/xsum.roberta.tar.gz"
     datapath = "models/xsum.roberta.tar.gz/data"
-    opt_dir = "logs"
+    opt_dir = "../master-thesis/logs/detect_hallucination/"
     if not os.path.exists(opt_dir):
         os.mkdir(opt_dir)
     print("log dir: " + opt_dir)
