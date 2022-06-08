@@ -47,10 +47,10 @@ def convert_gpt2_labels_to_raw_labels(sent_bpe, sent_detoks, bpe_labels):
     return detok_labels
 
 if __name__ == '__main__':
-    prefix = sys.argv[1]
+    suffix = sys.argv[1]
     raw_dir = "data"
     source_fname = "source"
-    hypo_fname = "hypo" + prefix
+    hypo_fname = "hypo" + suffix
 
     model_path = "models/xsum.roberta.tar.gz"
     datapath = "models/xsum.roberta.tar.gz/data"
@@ -58,8 +58,8 @@ if __name__ == '__main__':
     if not os.path.exists(opt_dir):
         os.mkdir(opt_dir)
     print("log dir: " + opt_dir)
-    flog = open(os.path.join(opt_dir, "hal_pred" + prefix + ".log"), "w", encoding="utf-8")
-    flabel = open(os.path.join(opt_dir, "label" + prefix), "w", encoding="utf-8")
+    flog = open(os.path.join(opt_dir, "hal_pred" + suffix + ".log"), "w", encoding="utf-8")
+    flabel = open(os.path.join(opt_dir, "label" + suffix), "w", encoding="utf-8")
 
     # read input in
     data = []
