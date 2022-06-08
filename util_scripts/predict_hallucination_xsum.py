@@ -1,5 +1,6 @@
 import os
 import torch
+import sys
 from fairseq.models.roberta import RobertaModel
 
 
@@ -46,9 +47,9 @@ def convert_gpt2_labels_to_raw_labels(sent_bpe, sent_detoks, bpe_labels):
     return detok_labels
 
 if __name__ == '__main__':
+    prefix = sys.argv[1]
     raw_dir = "data"
-    source_fname = "source_10"
-    prefix = "_10"
+    source_fname = "source"
     hypo_fname = "hypo" + prefix
 
     model_path = "models/xsum.roberta.tar.gz"
