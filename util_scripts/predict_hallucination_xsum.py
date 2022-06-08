@@ -47,8 +47,9 @@ def convert_gpt2_labels_to_raw_labels(sent_bpe, sent_detoks, bpe_labels):
 
 if __name__ == '__main__':
     raw_dir = "data"
-    source_fname = "source"  # file name of the source input
-    hypo_fname = "hypo"  # file name that you want to predict if they contain hallucinations based on the source
+    source_fname = "source_10"
+    prefix = "_10"
+    hypo_fname = "hypo" + prefix
 
     model_path = "models/xsum.roberta.tar.gz"
     datapath = "models/xsum.roberta.tar.gz/data"
@@ -56,8 +57,8 @@ if __name__ == '__main__':
     if not os.path.exists(opt_dir):
         os.mkdir(opt_dir)
     print("log dir: " + opt_dir)
-    flog = open(os.path.join(opt_dir, "hal_pred.log"), "w", encoding="utf-8")
-    flabel = open(os.path.join(opt_dir, "label"), "w", encoding="utf-8")
+    flog = open(os.path.join(opt_dir, "hal_pred" + prefix + ".log"), "w", encoding="utf-8")
+    flabel = open(os.path.join(opt_dir, "label" + prefix), "w", encoding="utf-8")
 
     # read input in
     data = []
@@ -76,10 +77,9 @@ if __name__ == '__main__':
     raw = True
     print("Loaded the model!")
 
-    # TODO: Uncomment two lines below when have a GPU
-    # roberta.cuda()
+    roberta.cuda()
     roberta.eval()
-    # roberta.half()
+    roberta.half()
 
     max_positions = roberta.model.max_positions()
     # """
