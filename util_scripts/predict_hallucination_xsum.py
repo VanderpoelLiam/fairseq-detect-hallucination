@@ -48,13 +48,14 @@ def convert_gpt2_labels_to_raw_labels(sent_bpe, sent_detoks, bpe_labels):
 
 if __name__ == '__main__':
     suffix = sys.argv[1]
-    raw_dir = "../master-thesis/data/xsum-detect-hall/"
+    raw_dir = sys.argv[2]
+    opt_dir = sys.argv[3]
+
     source_fname = "source"
     hypo_fname = "hypo" + suffix
 
     model_path = "models/xsum.roberta.tar.gz"
     datapath = "models/xsum.roberta.tar.gz/data"
-    opt_dir = "../master-thesis/logs/detect_hallucination/"
     if not os.path.exists(opt_dir):
         os.mkdir(opt_dir)
     print("log dir: " + opt_dir)
@@ -111,5 +112,5 @@ if __name__ == '__main__':
                                                                         cum_lengths:cum_lengths + len(
                                                                             sent.split())])
             cum_lengths += len(sent.split())
-            flog.write("Token-Prediction: " + " ".join(["{}[{}]".format(t, p) for t, p in zip(raw_target.split(), token_prediction_labels)]) + "\n")
+            # flog.write("Token-Prediction: " + " ".join(["{}[{}]".format(t, p) for t, p in zip(raw_target.split(), token_prediction_labels)]) + "\n")
             flabel.write(" ".join(["{}".format(p) for p in token_prediction_labels]) + "\n")
