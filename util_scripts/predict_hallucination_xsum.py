@@ -59,7 +59,7 @@ if __name__ == '__main__':
     if not os.path.exists(opt_dir):
         os.mkdir(opt_dir)
     print("log dir: " + opt_dir)
-    flog = open(os.path.join(opt_dir, "hal_pred" + suffix + ".log"), "w", encoding="utf-8")
+    # flog = open(os.path.join(opt_dir, "hal_pred" + suffix + ".log"), "w", encoding="utf-8")
     flabel = open(os.path.join(opt_dir, "label" + suffix), "w", encoding="utf-8")
 
     # read input in
